@@ -20,9 +20,23 @@ def main():
             time_out=input(day+" out:")
         week.append(time_in)
         week.append(time_out)
+    for x in week:
+        pass
     print (week)
+    
+    print(convert_to_mil_time("7:42a"))
 def convert_to_mil_time(time_to_convert):
-    pass
+    converted = time_to_convert.replace(":","")
+    length_of_time=len(converted)
+    #convert standard time to military time, add 1200 to any time from 1:00pm to 11:00pm
+    if converted[length_of_time-1:] =="a":
+        print("if a")
+        converted=converted.zfill(length_of_time+1)
+        converted=converted[:4]
+    elif int(converted[:2]) > 12:
+        converted=str(int(converted[:2])-2)+converted[2:]
+    converted = converted.zfill(4)
+    return converted
 def round_to_15(num):
     pass
     
